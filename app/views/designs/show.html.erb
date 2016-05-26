@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Diseño</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <td>
+		<%= @design.nombre %>
+  	</td>
+  	<td>
+  		<%= @design.descripcion %>
+  	</td>
+  	<td>
+  	  <%= image_tag @design.image.url(:thumb) %>
+  	</td>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_design_path(@design), class: 'btn btn-default' %> 
+<%= link_to 'Atras', designs_path, class: 'btn btn-default' %>

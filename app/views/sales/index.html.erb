@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center" style="font-family: verdana; font-size: 20px;">Ventas realizadas</h1></br></br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Productos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sales.each do |sale| %>
+      <tr>
+        <td><%= sale.client.nombre %></td>
+        <td><%= sale.sale_products.count %></td>
+        <td><%= link_to 'Facturar', sale, class: 'btn btn-primary' %></td>
+
+        <!--<% unless sale.finished %> <td><%= link_to 'Editar', edit_sale_path(sale), class: 'btn btn-info' %></td> <% end %>-->
+        
+        <td><%= link_to 'Eliminar', sale, method: :delete, data: { confirm: 'Seguro?' }, class: 'btn btn-danger' %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva Venta', new_sale_path, class: 'btn btn-success' %>
+<%= link_to 'Inicio', root_path, class: 'btn btn-info' %>

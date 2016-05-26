@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+
+<table class="table">
+  <thead>
+    <th>Codigo</th>
+    <th>Nombre</th>
+    <th>Costo</th>
+    <th>Tipo</th>
+    <th>Cantidad</th>
+  </thead>
+  <tbody>
+    <td><%= @product.codigo %></td>
+    <td><%= @product.nombre %></td>
+    <td><%= @product.costo %></td>
+    <td><%= @product.tipo %></td>
+    <td><%= @product.cantidad %></td>
+  </tbody>
+</table>
+<%= link_to 'Editar', edit_product_path(@product) %> |
+<%= link_to 'Atras', products_path, class: 'btn btn-default' %>

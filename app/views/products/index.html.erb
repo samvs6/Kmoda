@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center" style="font-family: verdana; font-size: 20px;">Lista de productos</h1></br></br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Nombre</th>
+      <th>Costo</th>
+      <th>Tipo</th>
+      <th>Cantidad</th>
+      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.codigo %></td>
+        <td><%= product.nombre %></td>
+        <td><%= product.costo %></td>
+        <td><%= product.tipo %></td>
+        <td><%= product.cantidad %></td>
+        <td><%= link_to 'Ver', product, class: 'btn btn-default' %></td>
+        <td><%= link_to 'Editar', edit_product_path(product), class: 'btn btn-success' %></td>
+        <td><%= link_to 'Eliminar', product, method: :delete, data: { confirm: 'Seguro?' },  class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Producto', new_product_path, class: 'btn btn-default' %>
+<%= link_to 'Inicio', root_path, class: 'btn btn-info' %>

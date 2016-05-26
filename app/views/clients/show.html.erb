@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nit</th>
+      <th>Nombre</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <td>
+	  <%= @client.nit %>
+	</td>
+
+	<td>
+	  <%= @client.nombre %>
+	</td>
+  </tbody>
+</table>
+<%= link_to 'Editar', edit_client_path(@client), class: 'btn btn-default' %> 
+<%= link_to 'Atras', clients_path, class: 'btn btn-default' %>

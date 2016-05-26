@@ -1,0 +1,29 @@
+<%= form_for(@sale_product) do |f| %>
+  <% if @sale_product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sale_product.errors.count, "error") %> no permite(n) registrar la venta:</h2>
+
+      <ul>
+      <% @sale_product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sale_id %><br>
+    <%= f.text_field :sale_id %>
+  </div>
+  <div class="field">
+    <%= f.label :product_id %><br>
+    <%= f.text_field :product_id %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.number_field :amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

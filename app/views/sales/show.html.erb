@@ -1,0 +1,111 @@
+
+<p id="notice">
+  <%= notice %>
+</p>
+<div style="float: left;">
+<%= image_tag 'k copia.png',:width => 100, :height => 110 %>
+</div> </br>
+<div>
+  <h5>&nbsp;&nbsp;&nbsp;&nbsp; Nombre </h5>
+  <h5>&nbsp;&nbsp;&nbsp;&nbsp; Direccion </h5>
+  <h5>&nbsp;&nbsp;&nbsp;&nbsp; Telefono </h5>
+</div>
+<div >
+
+  <table align="right" class="text-right">
+    <tr>
+      <td><h4><b>  Cliente:&nbsp;&nbsp;&nbsp; </b></h4> </td> 
+      <td> <h4> <%= @sale.client.nombre %></h4></td>
+    </tr>
+    <tr>
+      <td> <h4> <b>NIT:&nbsp;&nbsp;&nbsp;</b></h4> </td> 
+      <td> <h4> <%= @sale.client.nit %> </h4></td>
+    </tr>
+  </table>
+</div>
+<table class="table table-hover table-striped">
+  <thead>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Precio por unidad</th>
+    <th>Total</th>
+    <% unless @sale.finished %>
+      <th>Opciones</th>
+    <% end %>
+  </thead>
+
+  <% total = 0 %>
+
+  <tbody>
+    <% @sale_products.each do |sale_product| %>
+      <br>
+      <tr>
+        <div class="hidden"> holas :D </div>
+        <td><%= sale_product.product.nombre %></td>
+        <td><%= sale_product.amount %></td>
+        <td><%= sale_product.product.costo %></td>
+        <td><%= sale_product.product.costo * sale_product.amount %></td>
+
+        <% total += sale_product.product.costo * sale_product.amount %>
+        
+      </tr>
+      <% end %>
+  </tbody>
+  <tfoot>
+    <td></td>
+    <td></td>
+    <td> <h4><b>Total:</b></h4></td>
+    <td>
+      <%= total %>
+    </td>
+  </tfoot>
+
+</table>
+
+<% unless @sale.finished %>
+  <br><br>
+
+  <p id="notice">
+    <%= notice %>
+  </p>
+
+  <hr size="500px" width="70%" align="center" color="red" />
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Costo</th>
+        <th>Cantidad</th>
+        <th>Cantidad de compra</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @productos.each do |product| %>
+        <%= form_tag('/sale_products', method: 'post') do %>
+          <div class="field hidden">
+            <%= text_field_tag 'sale_product[sale_id]', @sale.id %>
+            <%= number_field_tag 'sale_product[product_id]', product.id %>
+          </div>
+
+          <tr>
+            <td><%= product.codigo %></td>
+            <td><%= product.nombre %></td>
+            <td><%= product.costo %></td>
+            <td><%= product.cantidad %></td>
+            <td><input type="number" name="sale_product[amount]" value="0"></td>
+            <td><%= submit_tag 'Agregar producto', {class: 'btn bg-green'} %></td>
+          </tr>
+        <% end -%>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br><br>
+  <%= link_to 'Terminar venta', '/finish/sale/' + @sale.id.to_s, data: { confirm: 'Una vez terminada la venta no se podra editar'}, class: 'btn btn-lg bg-blue' %>
+  <%= link_to 'Cancelar venta', '/sales/' + @sale.id.to_s, method: :delete, data: { confirm: 'Seguro?'}, class: 'btn btn-lg bg-red' %>
+  <br><br>
+<% end %>
+
+<!--<%= link_to 'Editar', edit_sale_path(@sale), class: 'btn btn-info' %>-->

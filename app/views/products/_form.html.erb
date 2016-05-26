@@ -1,0 +1,38 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> no permite(n) guardar este producto:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :codigo %><br>
+    <%= f.number_field :codigo %>
+  </div>
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :costo %><br>
+    <%= f.text_field :costo %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo %><br>
+    <%= f.text_field :tipo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cantidad %><br>
+    <%= f.number_field :cantidad %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Aceptar" %>
+  </div>
+<% end %>

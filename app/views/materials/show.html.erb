@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+
+<table class="table">
+	<header>
+		<th>Nombre</th>
+		<th>Tipo</th>
+		<th>Color</th>
+		<th>Cantida</th>
+	</header>
+	<tbody>
+		<td> <%= @material.nombre %></td>
+		<td> <%= @material.tipo %></td>
+		<td> <%= @material.color %></td>
+		<td> <%= @material.cantidad %></td>
+	</tbody>
+</table>
+
+
+<%= link_to 'Editar', edit_material_path(@material) ,class: 'btn btn-default'%>
+<%= link_to 'Atras', materials_path, class: 'btn btn-default'%>
