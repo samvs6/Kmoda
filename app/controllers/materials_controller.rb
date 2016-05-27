@@ -7,6 +7,9 @@ class MaterialsController < ApplicationController
     @materials = Material.all
   end
 
+  def reporte
+    @materials = Material.all
+  end
   # GET /materials/1
   # GET /materials/1.json
   def show

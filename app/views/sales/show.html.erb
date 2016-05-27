@@ -47,7 +47,9 @@
         <td><%= sale_product.product.costo * sale_product.amount %></td>
 
         <% total += sale_product.product.costo * sale_product.amount %>
-        
+        <% unless @sale.finished %>
+        <td><%= link_to 'Eliminar', sale_product ,method: :delete,  confirm: 'Are you sure?', class: "btn btn-danger" %></td>
+        <% end %>
       </tr>
       <% end %>
   </tbody>

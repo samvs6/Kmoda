@@ -7,6 +7,9 @@ class DesignsController < ApplicationController
     @designs = Design.all
   end
 
+  def reporte
+    @designs = Design.all
+  end
   # GET /designs/1
   # GET /designs/1.json
   def show
